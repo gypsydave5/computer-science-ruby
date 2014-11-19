@@ -16,9 +16,7 @@ class Array
           minimum_position = j
         end
       end
-      temp = self[i]
-      self[i] = self[minimum_position]
-      self[minimum_position] = temp
+      switch_position(self, i, minimum_position)
     end
 
     puts "selection: #{@@selection_comparisons}"
@@ -36,9 +34,7 @@ class Array
       while (j > 0) and (not complete)
         @@insertion_comparisons += 1
         if self[j] < self[j - 1]
-          temp = self[j]
-          self[j] = self[j - 1]
-          self[j - 1] = temp
+          switch_position(self, j, j - 1)
         else
           complete = true
         end
@@ -57,9 +53,7 @@ class Array
       for j in (i + 1)...(self.size)
         @@bubble_comparisons += 1
         if self[j] < self[i]
-          temp = self[j]
-          self[j]  = self[i]
-          self[i] = temp
+          switch_position(self, i, j)
         end
       end
     end
