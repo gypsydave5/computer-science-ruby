@@ -15,9 +15,18 @@ describe 'sort algorithms' do
   end
 
 
-  it 'can do selection sort' do
+  it 'can do insertion sort' do
     expect(array1.insertion_sort).to eql sorted_array1
     expect(array2.insertion_sort).to eql sorted_array2
   end
 
+  it 'can do bubble sort' do
+    expect(array1.bubble_sort).to eql sorted_array1
+    expect(array2.bubble_sort).to eql sorted_array2
+  end
+
+  it 'can do radix sort' do
+    expect(array1.radix_sort).to eql sorted_array1
+    expect(array2.radix_sort).to eql sorted_array2
+  end
 end
