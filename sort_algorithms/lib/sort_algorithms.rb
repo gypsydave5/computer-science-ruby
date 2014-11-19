@@ -42,7 +42,7 @@ class Array
         else
           complete = true
         end
-        j += j
+        j -= 1
       end
     end
 
@@ -72,25 +72,28 @@ class Array
   def radix_sort
 
     max_length = self.map(&:to_s).max_by(&:length).length
-    self.map!{ |number| number.to_s.rjust(max_length, "0") }
-
-    array = []
-
+    array = self.map{ |number| number.to_s.rjust(max_length, "0") }
     for i in 0...max_length
       buckets = {}
       for j in "0".."9"
         buckets[j] = []
       end
       for j in 0...self.length
-        number = self[j]
+        number = array[j]
         digit = number[max_length - i - 1]
-        buckets[digit].push number
+        buckets[digit] << number
       end
-    array  = buckets.values.flatten
+      array = buckets.values.flatten
     end
 
     array.map(&:to_i)
 
+  end
+
+  def switch_position(array, position_one, position_two)
+    temp = array[position_one]
+    array[position_one] = array[position_two]
+    array[position_two] = temp
   end
 
   def self.comparison_totals
